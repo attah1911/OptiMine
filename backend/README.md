@@ -43,27 +43,13 @@ PASSWORD_RESET_TOKEN_EXPIRES_IN=15 (Ubah sesuai dengan keinginan)
 - `VERIFICATION_CODE_EXPIRES_IN`: Waktu kedaluwarsa kode verifikasi dalam menit
 - `PASSWORD_RESET_TOKEN_EXPIRES_IN`: Waktu kedaluwarsa token reset password dalam menit
 
-### 3. Run database migrations:
-
-- Login ke Supabase Dashboard
-- Execute SQL dari `src/database/schema.sql`
-
-### 4. Setup Gmail App Password
-
-1. Login ke Google Account
-2. Buka [App Passwords](https://myaccount.google.com/apppasswords)
-3. Pilih "Mail" dan "Other (Custom name)"
-4. Masukkan nama aplikasi (contoh: "OptiMine Backend")
-5. Generate password
-6. Copy password tersebut ke `SMTP_PASS` di `.env`
-
-### 5. Start development server:
+### 3. Start development server:
 
 ```bash
 npm run dev
 ```
 
-### 6. Start Production Build
+### 4. Start Production Build
 
 ```bash
 npm start
