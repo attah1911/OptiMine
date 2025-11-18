@@ -64,7 +64,6 @@ OptiMine/
 │   │   ├── App.jsx        # Main app component
 │   │   └── main.jsx       # Entry point
 │   └── package.json
-│
 ```
 
 ## 🚀 Setup & Installation
@@ -154,15 +153,6 @@ VITE_API_URL=http://localhost:5000/api
 
 ### 6. Run Application
 
-#### Development Mode (Recommended)
-
-```bash
-# Run both frontend & backend
-npm run dev
-```
-
-#### Manual Run
-
 Terminal 1 (Backend):
 
 ```bash
@@ -187,13 +177,16 @@ npm run dev
 
 ### Authentication
 
-| Method | Endpoint                | Description                    |
-| ------ | ----------------------- | ------------------------------ |
-| POST   | `/api/auth/register`    | Register new user              |
-| POST   | `/api/auth/login`       | Login & send verification code |
-| POST   | `/api/auth/verify`      | Verify code & complete login   |
-| POST   | `/api/auth/resend-code` | Resend verification code       |
-| GET    | `/api/auth/me`          | Get current user (Protected)   |
+| Method | Endpoint                    | Description                    |
+| ------ | ----------------------------| ------------------------------ |
+| POST   | `/api/auth/register`        | Register new user (disabled)   |
+| POST   | `/api/auth/login`           | Login & send verification code |
+| POST   | `/api/auth/verify`          | Verify code & complete login   |
+| POST   | `/api/auth/resend-code`     | Resend verification code       |
+| POST   | `/api/auth/forgot-password` | Feature Forgot Password        |
+| POST   | `/api/auth/reset-password`  | Feature Reset Password         |
+| GET    | `/api/auth/me`              | Get current user (Protected)   |
+
 
 ## 🔒 Security Features
 
