@@ -218,20 +218,6 @@ npm run dev
 - Redux Toolkit untuk state management yang efisien
 - Tailwind CSS untuk styling yang consistent
 
-## 🔄 Future Enhancements
-
-- [ ] Forgot password functionality
-- [ ] Email verification on registration
-- [ ] Refresh token implementation
-- [ ] Advanced logging system
-- [ ] Unit & integration tests
-- [ ] Docker containerization
-- [ ] Production deployment guides
-
-## 📄 License
-
-Private - Capstone Project
-
 ## 👥 Credits
 
 Developed for Mining Value Chain Optimization capstone project.
