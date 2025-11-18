@@ -123,7 +123,7 @@ PORT=5000
 NODE_ENV=development
 
 # Database Configuration (Supabase PostgreSQL)
-DATABASE_URL=postgresql://postgres:[YOUR_PASSWORD]@db.yivqtafuxgqqkmuzyjqp.supabase.co:5432/postgres
+DATABASE_URL=your_database_url_from_supabase
 
 # JWT Configuration
 JWT_SECRET=your_secure_jwt_secret_key_here
