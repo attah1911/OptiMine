@@ -44,7 +44,7 @@ Aplikasi ini dirancang untuk mengelola perencanaan dan distribusi tambang dengan
 ## 📁 Struktur Project
 
 ```
-capstone-asah/
+OptiMine/
 ├── backend/                 # Backend API (Express.js)
 │   ├── src/
 │   │   ├── config/         # Database & Email configuration
