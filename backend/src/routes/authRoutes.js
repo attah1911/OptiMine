@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  register,
+  // register,
   login,
   verifyCode,
   getCurrentUser,
@@ -12,7 +12,7 @@ import { authenticateToken } from "../middleware/auth.js";
 import {
   loginValidation,
   verificationValidation,
-  registerValidation,
+  // registerValidation,
   forgotPasswordValidation,
   resetPasswordValidation,
 } from "../middleware/validation.js";
@@ -20,7 +20,7 @@ import {
 const router = express.Router();
 
 // Public routes
-router.post("/register", registerValidation, register);
+// router.post("/register", registerValidation, register);
 router.post("/login", loginValidation, login);
 router.post("/verify", verificationValidation, verifyCode);
 router.post("/resend-code", resendCode);
