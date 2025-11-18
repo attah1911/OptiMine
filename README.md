@@ -1,6 +1,6 @@
 # OptiMine Portal Web
 
-Sistem Perencanaan & Distribusi Tambang untuk Mining Value Chain Optimization
+Sistem Perencanaan & Distribusi Tambang untuk Mining Value Chain Optimization (OptiMine)
 
 ## 📋 Deskripsi
 
@@ -65,7 +65,6 @@ OptiMine/
 │   │   └── main.jsx       # Entry point
 │   └── package.json
 │
-└── package.json           # Root package.json (workspaces)
 ```
 
 ## 🚀 Setup & Installation
@@ -80,21 +79,11 @@ OptiMine/
 
 ```bash
 git clone <repository-url>
-cd capstone-asah
 ```
 
 ### 2. Install Dependencies
 
 ```bash
-npm run install:all
-```
-
-Atau manual:
-
-```bash
-# Install root dependencies
-npm install
-
 # Install backend dependencies
 cd backend
 npm install
@@ -143,7 +132,7 @@ VERIFICATION_CODE_EXPIRES_IN=10
 
 **Penting:**
 
-- Ganti `[YOUR_PASSWORD]` dengan password Supabase Anda
+- Ganti `your_database_url_from_supabase` dengan URI dari supabase anda
 - Ganti `JWT_SECRET` dengan secret key yang aman
 - Setup Gmail App Password untuk SMTP (bukan password biasa)
 
@@ -194,24 +183,6 @@ npm run dev
 - Backend API: http://localhost:5000
 - Health Check: http://localhost:5000/health
 
-## 👤 Demo Accounts
-
-Setelah menjalankan schema.sql, Anda bisa login dengan:
-
-### Mining Planner
-
-- **Username**: `main`
-- **Email**: `main@mining.com`
-- **Password**: `password123`
-
-### Shipping Planner
-
-- **Username**: `shipping`
-- **Email**: `shipping@mining.com`
-- **Password**: `password123`
-
-**Note**: Setelah login, kode verifikasi akan dikirim ke email yang terdaftar.
-
 ## 📡 API Endpoints
 
 ### Authentication
@@ -223,28 +194,6 @@ Setelah menjalankan schema.sql, Anda bisa login dengan:
 | POST   | `/api/auth/verify`      | Verify code & complete login   |
 | POST   | `/api/auth/resend-code` | Resend verification code       |
 | GET    | `/api/auth/me`          | Get current user (Protected)   |
-
-### Request Examples
-
-#### Login
-
-```json
-POST /api/auth/login
-{
-  "identifier": "main",
-  "password": "password123"
-}
-```
-
-#### Verify Code
-
-```json
-POST /api/auth/verify
-{
-  "identifier": "main",
-  "code": "123456"
-}
-```
 
 ## 🔒 Security Features
 
@@ -268,53 +217,6 @@ POST /api/auth/verify
 ### Typography
 
 - Font Family: Inter
-
-## 📝 Best Practices Implemented
-
-1. **Clean Code**
-
-   - Consistent naming conventions
-   - Proper code organization
-   - Separation of concerns
-
-2. **DRY Principle**
-
-   - Reusable components
-   - Shared utilities
-   - Common middleware
-
-3. **Security First**
-
-   - Environment variables for sensitive data
-   - Password hashing
-   - JWT authentication
-   - Input validation
-   - Rate limiting
-
-4. **Scalable Architecture**
-   - Modular structure
-   - Clear separation of frontend & backend
-   - Redux for state management
-   - RESTful API design
-
-## 🐛 Troubleshooting
-
-### Database Connection Error
-
-- Pastikan DATABASE_URL benar
-- Check apakah Supabase project sudah aktif
-- Verify password di connection string
-
-### Email Not Sending
-
-- Pastikan SMTP credentials benar
-- Check Gmail App Password (bukan password biasa)
-- Verify SMTP_HOST dan SMTP_PORT
-
-### CORS Error
-
-- Check FRONTEND_URL di backend .env
-- Pastikan frontend running di port 5173
 
 ## 📚 Development Notes
 
@@ -342,5 +244,3 @@ Private - Capstone Project
 Developed for Mining Value Chain Optimization capstone project.
 
 ---
-
-**Happy Coding! 🚀**
