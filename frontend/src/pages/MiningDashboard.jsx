@@ -30,11 +30,11 @@ const MiningDashboard = () => {
   return (
     <DashboardLayout title="Mining Planner Dashboard">
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {miningStats.map((stat, index) => (
           <StatCard key={index} {...stat} />
         ))}
-      </div>
+      </section>
     </DashboardLayout>
   );
 };

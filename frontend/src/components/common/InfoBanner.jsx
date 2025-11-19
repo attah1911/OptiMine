@@ -14,12 +14,12 @@ const InfoBanner = ({ label, value, variant = "info" }) => {
   };
 
   return (
-    <div className={`${variants[variant]} border rounded-lg p-3 text-center`}>
+    <aside className={`${variants[variant]} border rounded-lg p-3 text-center`}>
       <p className="text-xs">{label}</p>
       <p className={`text-sm font-semibold ${valueColors[variant]} mt-1`}>
         {value}
       </p>
-    </div>
+    </aside>
   );
 };
 

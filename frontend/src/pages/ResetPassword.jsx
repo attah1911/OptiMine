@@ -6,6 +6,7 @@ import Input from "../components/common/Input";
 import { HiOutlineKey } from "react-icons/hi";
 import { getErrorMessage } from "../utils/helpers";
 import toast from "react-hot-toast";
+import Logo from "../components/common/Logo";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -73,10 +74,11 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sage-300 via-sage-400 to-sage-500 flex items-center justify-center px-4 py-8">
-      <div className="w-full max-w-md">
+    <main className="min-h-screen bg-gradient-to-br from-sage-300 via-sage-400 to-sage-500 flex items-center justify-center px-4 py-8">
+      <Logo containerClasses="absolute top-6 left-6" size="w-32 h-16" />
+      <article className="w-full max-w-md">
         {/* Header */}
-        <div className="text-center mb-6 flex flex-col items-center">
+        <header className="text-center mb-6 flex flex-col items-center">
           <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-lg">
             <HiOutlineKey className="w-8 h-8 text-primary" />
           </div>
@@ -84,10 +86,10 @@ const ResetPassword = () => {
             Reset Password
           </h1>
           <p className="text-sm text-sage-100">Masukkan password baru Anda</p>
-        </div>
+        </header>
 
         {/* Form Card */}
-        <div className="bg-white rounded-xl shadow-2xl p-6">
+        <section className="bg-white rounded-xl shadow-2xl p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input
               id="newPassword"
@@ -124,17 +126,17 @@ const ResetPassword = () => {
           </form>
 
           {/* Back to Login */}
-          <div className="mt-5 text-center">
+          <nav className="mt-5 text-center">
             <button
               onClick={() => navigate("/login")}
               className="text-sm text-sage-600 hover:text-sage-800"
             >
               ← Kembali ke login
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
+          </nav>
+        </section>
+      </article>
+    </main>
   );
 };
 

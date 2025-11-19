@@ -9,6 +9,7 @@ import InfoBanner from "../components/common/InfoBanner";
 import { HiOutlineMail } from "react-icons/hi";
 import { getErrorMessage } from "../utils/helpers";
 import toast from "react-hot-toast";
+import Logo from "../components/common/Logo";
 
 const VERIFICATION_CODE_LENGTH = 6;
 
@@ -88,10 +89,11 @@ const VerifyCode = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sage-300 via-sage-400 to-sage-500 flex items-center justify-center px-4 py-8">
-      <div className="w-full max-w-md">
+    <main className="min-h-screen bg-gradient-to-br from-sage-300 via-sage-400 to-sage-500 flex items-center justify-center px-4 py-8">
+      <Logo containerClasses="absolute top-6 left-6" size="w-32 h-16" />
+      <article className="w-full max-w-md">
         {/* Header */}
-        <div className="text-center mb-6 flex flex-col items-center">
+        <header className="text-center mb-6 flex flex-col items-center">
           <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-lg">
             <HiOutlineMail className="w-8 h-8 text-primary" />
           </div>
@@ -101,10 +103,10 @@ const VerifyCode = () => {
           <p className="text-sm text-sage-100">
             Masukkan kode yang dikirim ke email Anda
           </p>
-        </div>
+        </header>
 
         {/* Verify Card */}
-        <div className="bg-white rounded-xl shadow-2xl p-6">
+        <section className="bg-white rounded-xl shadow-2xl p-6">
           <div className="mb-5">
             <InfoBanner
               label="Kode verifikasi telah dikirim ke:"
@@ -127,29 +129,30 @@ const VerifyCode = () => {
           </form>
 
           {/* Resend Code */}
-          <div className="mt-5 text-center">
-            <p className="text-xs text-sage-600 mb-2">Tidak menerima kode?</p>
-            <button
-              onClick={handleResendCode}
-              disabled={isResending}
-              className="text-xs font-medium text-primary hover:text-primary-dark underline disabled:opacity-50"
-            >
-              {isResending ? "Mengirim ulang..." : "Kirim ulang kode"}
-            </button>
-          </div>
+          <nav className="mt-5 space-y-3">
+            <div className="text-center">
+              <p className="text-xs text-sage-600 mb-2">Tidak menerima kode?</p>
+              <button
+                onClick={handleResendCode}
+                disabled={isResending}
+                className="text-xs font-medium text-primary hover:text-primary-dark underline disabled:opacity-50"
+              >
+                {isResending ? "Mengirim ulang..." : "Kirim ulang kode"}
+              </button>
+            </div>
 
-          {/* Back to Login */}
-          <div className="mt-3 text-center">
-            <button
-              onClick={() => navigate("/login")}
-              className="text-xs text-sage-600 hover:text-sage-800"
-            >
-              ← Kembali ke login
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            <div className="text-center">
+              <button
+                onClick={() => navigate("/login")}
+                className="text-xs text-sage-600 hover:text-sage-800"
+              >
+                ← Kembali ke login
+              </button>
+            </div>
+          </nav>
+        </section>
+      </article>
+    </main>
   );
 };
 

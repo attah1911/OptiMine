@@ -4,8 +4,8 @@ import LoginForm from "../components/auth/LoginForm";
 const Login = () => {
   return (
     <AuthLayout
-      title="Mining Distribution System"
-      subtitle="Perencanaan & Distribusi Tambang"
+      title="Mining Value Chain Optimization"
+      subtitle="Silahkan login untuk melanjutkan ke dashboard"
     >
       <h2 className="text-xl font-semibold text-center text-primary mb-5">
         Login

@@ -7,6 +7,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import { IoArrowBack } from "react-icons/io5";
 import { getErrorMessage, isValidEmail } from "../utils/helpers";
 import toast from "react-hot-toast";
+import Logo from "../components/common/Logo";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -44,10 +45,11 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sage-300 via-sage-400 to-sage-500 flex items-center justify-center px-4 py-8">
-      <div className="w-full max-w-md">
+    <main className="relative min-h-screen bg-gradient-to-br from-sage-300 via-sage-400 to-sage-500 flex items-center justify-center px-4 py-8">
+      <Logo containerClasses="absolute top-6 left-6" size="w-32 h-16" />
+      <article className="w-full max-w-md">
         {/* Header */}
-        <div className="text-center mb-6 flex flex-col items-center">
+        <header className="text-center mb-6 flex flex-col items-center">
           <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-lg">
             <HiOutlineMail className="w-8 h-8 text-primary" />
           </div>
@@ -57,10 +59,10 @@ const ForgotPassword = () => {
           <p className="text-sm text-sage-100">
             Masukkan email Anda untuk menerima link reset password
           </p>
-        </div>
+        </header>
 
         {/* Form Card */}
-        <div className="bg-white rounded-xl shadow-2xl p-6">
+        <section className="bg-white rounded-xl shadow-2xl p-6">
           <form onSubmit={handleSubmit} className="space-y-5">
             <Input
               id="email"
@@ -86,7 +88,7 @@ const ForgotPassword = () => {
           </form>
 
           {/* Back to Login */}
-          <div className="mt-5 text-center">
+          <nav className="mt-5 text-center">
             <button
               onClick={() => navigate("/login")}
               className="text-sm text-sage-600 hover:text-sage-800 flex items-center justify-center gap-1"
@@ -94,10 +96,10 @@ const ForgotPassword = () => {
               <IoArrowBack className="w-4 h-4" />
               Kembali ke login
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
+          </nav>
+        </section>
+      </article>
+    </main>
   );
 };
 
