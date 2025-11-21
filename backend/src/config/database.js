@@ -12,7 +12,6 @@ const pool = new Pool({
   },
 });
 
-// Test database connection on startup
 export const testConnection = async () => {
   try {
     const client = await pool.connect();
@@ -26,7 +25,6 @@ export const testConnection = async () => {
   }
 };
 
-// Handle unexpected errors
 pool.on("error", (err) => {
   console.error("❌ Unexpected error on database client", err);
 });

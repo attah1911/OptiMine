@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import { logout } from "../store/slices/authSlice";
-import { GiMining } from "react-icons/gi";
 import {
   HiOutlineHome,
   HiOutlineChartBar,
