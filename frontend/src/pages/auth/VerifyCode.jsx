@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { verifySuccess, authFailure } from "../store/slices/authSlice";
-import { authService } from "../services/authService";
-import Button from "../components/common/Button";
-import CodeInput from "../components/common/CodeInput";
-import InfoBanner from "../components/common/InfoBanner";
+import { verifySuccess, authFailure } from "../../store/slices/authSlice";
+import { authService } from "../../services/authService";
+import Button from "../../components/common/Button";
+import CodeInput from "../../components/common/CodeInput";
+import InfoBanner from "../../components/common/InfoBanner";
 import { HiOutlineMail } from "react-icons/hi";
-import { getErrorMessage } from "../utils/helpers";
+import { getErrorMessage } from "../../utils/helpers";
 import toast from "react-hot-toast";
-import Logo from "../components/common/Logo";
+import Logo from "../../components/common/Logo";
 
 const VERIFICATION_CODE_LENGTH = 6;
 

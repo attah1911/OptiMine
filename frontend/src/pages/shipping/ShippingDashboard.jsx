@@ -1,15 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setUser } from "../store/slices/authSlice";
-import { authService } from "../services/authService";
-import DashboardLayout from "../components/DashboardLayout";
-import StatCard from "../components/dashboard/StatCard";
-import { miningStats } from "../utils/dashboardData";
-import { getErrorMessage } from "../utils/helpers";
+import { setUser } from "../../store/slices/authSlice";
+import { authService } from "../../services/authService";
+import DashboardLayout from "../../components/DashboardLayout";
+import StatCard from "../../components/dashboard/StatCard";
+import { shippingStats } from "../../utils/dashboardData";
+import { getErrorMessage } from "../../utils/helpers";
 import toast from "react-hot-toast";
 
-const MiningDashboard = () => {
+const ShippingDashboard = () => {
   const dispatch = useDispatch();
+  const [lastUpdate, setLastUpdate] = useState(new Date());
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
@@ -17,6 +18,7 @@ const MiningDashboard = () => {
         const response = await authService.getCurrentUser();
         if (response.success) {
           dispatch(setUser(response.data));
+          setLastUpdate(new Date());
         }
       } catch (error) {
         const errorMessage = getErrorMessage(error);
@@ -28,10 +30,10 @@ const MiningDashboard = () => {
   }, [dispatch]);
 
   return (
-    <DashboardLayout title="Mining Planner Dashboard">
+    <DashboardLayout title="Shipping Planner Dashboard" lastUpdate={lastUpdate}>
       {/* Stat Cards */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {miningStats.map((stat, index) => (
+        {shippingStats.map((stat, index) => (
           <StatCard key={index} {...stat} />
         ))}
       </section>
@@ -39,4 +41,4 @@ const MiningDashboard = () => {
   );
 };
 
-export default MiningDashboard;
+export default ShippingDashboard;

@@ -65,7 +65,7 @@ const generateResetToken = () => {
 // };
 
 // Step 1: Login and send verification code
-export const logins = async (req, res) => {
+export const login = async (req, res) => {
   try {
     const { identifier, password } = req.body;
 

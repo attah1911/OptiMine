@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { authService } from "../services/authService";
-import Button from "../components/common/Button";
-import Input from "../components/common/Input";
+import { authService } from "../../services/authService";
+import Button from "../../components/common/Button";
+import Input from "../../components/common/Input";
 import { HiOutlineKey } from "react-icons/hi";
-import { getErrorMessage } from "../utils/helpers";
+import { getErrorMessage } from "../../utils/helpers";
 import toast from "react-hot-toast";
-import Logo from "../components/common/Logo";
+import Logo from "../../components/common/Logo";
 
 const ResetPassword = () => {
   const navigate = useNavigate();

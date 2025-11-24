@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { authService } from "../services/authService";
-import Button from "../components/common/Button";
-import Input from "../components/common/Input";
+import { authService } from "../../services/authService";
+import Button from "../../components/common/Button";
+import Input from "../../components/common/Input";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoArrowBack } from "react-icons/io5";
-import { getErrorMessage, isValidEmail } from "../utils/helpers";
+import { getErrorMessage, isValidEmail } from "../../utils/helpers";
 import toast from "react-hot-toast";
-import Logo from "../components/common/Logo";
+import Logo from "../../components/common/Logo";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();

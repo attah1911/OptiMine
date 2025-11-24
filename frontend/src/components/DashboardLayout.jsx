@@ -4,19 +4,22 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { logout } from "../store/slices/authSlice";
 import {
   HiOutlineHome,
-  HiOutlineChartBar,
-  HiOutlineCog,
+  HiOutlineCalendar,
   HiOutlineLogout,
   HiOutlineMenu,
+  HiOutlinePencil,
+  HiOutlineUser,
   HiOutlineX,
   HiOutlineChevronLeft,
+  HiOutlineClock,
 } from "react-icons/hi";
+import { MdFactCheck } from "react-icons/md";
 import { getInitials, formatDate, hasRole } from "../utils/helpers";
 import { USER_ROLES } from "../utils/constants";
 import toast from "react-hot-toast";
 import Logo from "./common/Logo";
 
-const DashboardLayout = ({ children, title }) => {
+const DashboardLayout = ({ children, title, lastUpdate }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -36,23 +39,97 @@ const DashboardLayout = ({ children, title }) => {
     return "User";
   };
 
-  const menuItems = [
-    {
-      name: "Dashboard",
-      icon: HiOutlineHome,
-      path: `/dashboard/${user?.role}`,
-    },
-    {
-      name: "Perencanaan",
-      icon: HiOutlineChartBar,
-      path: `/dashboard/${user?.role}/planning`,
-    },
-    {
-      name: "Pengaturan",
-      icon: HiOutlineCog,
-      path: `/dashboard/${user?.role}/settings`,
-    },
-  ];
+  const formatLastUpdate = (date) => {
+    if (!date) return null;
+
+    const days = [
+      "Minggu",
+      "Senin",
+      "Selasa",
+      "Rabu",
+      "Kamis",
+      "Jumat",
+      "Sabtu",
+    ];
+    const months = [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember",
+    ];
+
+    const d = new Date(date);
+    const dayName = days[d.getDay()];
+    const day = d.getDate();
+    const month = months[d.getMonth()];
+    const year = d.getFullYear();
+    const hours = String(d.getHours()).padStart(2, "0");
+    const minutes = String(d.getMinutes()).padStart(2, "0");
+
+    return `${dayName}, ${day} ${month} ${year}, ${hours}.${minutes}`;
+  };
+
+  const getMenuItems = () => {
+    const commonMenus = [
+      {
+        name: "Dashboard",
+        icon: HiOutlineHome,
+        path: `/dashboard/${user?.role}`,
+      },
+      {
+        name: "Weekly Plan",
+        icon: HiOutlineCalendar,
+        path: `/dashboard/${user?.role}/weekly-plan`,
+      },
+      {
+        name: "Edit Data",
+        icon: HiOutlinePencil,
+        path: `/dashboard/${user?.role}/edit-data`,
+      },
+    ];
+
+    if (user?.role === USER_ROLES.MINING_PLANNER) {
+      return [
+        commonMenus[0],
+        {
+          name: "Approvement",
+          icon: MdFactCheck,
+          path: `/dashboard/${user?.role}/approvement`,
+        },
+        commonMenus[1],
+        commonMenus[2],
+        {
+          name: "Manage User",
+          icon: HiOutlineUser,
+          path: `/dashboard/${user?.role}/manage-user`,
+        },
+      ];
+    }
+
+    if (user?.role === USER_ROLES.SHIPPING_PLANNER) {
+      return [
+        commonMenus[0],
+        {
+          name: "Route Performance",
+          icon: MdFactCheck,
+          path: `/dashboard/${user?.role}/route-performance`,
+        },
+        commonMenus[1],
+        commonMenus[2],
+      ];
+    }
+
+    return commonMenus;
+  };
+  const menuItems = getMenuItems();
 
   const isActive = (path) => location.pathname === path;
 
@@ -164,13 +241,23 @@ const DashboardLayout = ({ children, title }) => {
           </div>
         </header>
 
-        {/* Page Content */}
-        <main className="flex-1 p-6 lg:p-8">
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-sage-800">{title}</h2>
+        {/* Page Header */}
+        <header className="bg-white border-b border-sage-200 shadow-sm">
+          <div className="px-6 lg:px-8 py-4 lg:py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <h2 className="text-xl lg:text-2xl font-bold text-sage-800">
+              {title}
+            </h2>
+            {lastUpdate && (
+              <div className="flex items-center gap-2 text-sage-600 text-sm">
+                <HiOutlineClock className="w-5 h-5" />
+                <span>Last Update: {formatLastUpdate(lastUpdate)}</span>
+              </div>
+            )}
           </div>
-          {children}
-        </main>
+        </header>
+
+        {/* Page Content */}
+        <main className="flex-1 p-6 lg:p-8">{children}</main>
       </div>
 
       {/* Overlay for mobile */}
