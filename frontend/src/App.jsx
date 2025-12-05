@@ -148,7 +148,7 @@ function App() {
         <Route
           path="/dashboard/shipping_planner/map"
           element={
-            <ProtectedRoute allowedRoles={["mining_planner"]}>
+            <ProtectedRoute allowedRoles={["shipping_planner"]}>
               <MapView />
             </ProtectedRoute>
           }
