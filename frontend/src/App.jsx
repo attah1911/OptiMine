@@ -93,9 +93,7 @@ function App() {
         <Route
           path="/dashboard/mining_planner/map"
           element={
-            <ProtectedRoute
-              allowedRoles={["mining_planner", "shipping_planner"]}
-            >
+            <ProtectedRoute allowedRoles={["mining_planner"]}>
               <MapView />
             </ProtectedRoute>
           }
@@ -150,9 +148,7 @@ function App() {
         <Route
           path="/dashboard/shipping_planner/map"
           element={
-            <ProtectedRoute
-              allowedRoles={["mining_planner", "shipping_planner"]}
-            >
+            <ProtectedRoute allowedRoles={["mining_planner"]}>
               <MapView />
             </ProtectedRoute>
           }
