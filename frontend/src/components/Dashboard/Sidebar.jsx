@@ -71,7 +71,7 @@ const Sidebar = ({
             <button
               key={item.path}
               onClick={() => handleMenuClick(item.path)}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
+              className={`w-full flex items-center space-x-3 px-4 py-3 mb-2 rounded-lg transition-colors duration-200 ${
                 isActive(item.path)
                   ? "bg-primary text-white"
                   : "text-sage-700 hover:bg-sage-100"

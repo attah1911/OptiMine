@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../store/slices/authSlice";
+import { logout } from "../../store/slices/authSlice";
 import toast from "react-hot-toast";
-import Sidebar from "./DashboardLayout/Sidebar";
-import Header from "./DashboardLayout/Header";
-import MobileTopBar from "./DashboardLayout/MobileTopBar";
+import Sidebar from "../Dashboard/Sidebar";
+import Header from "../Dashboard/Header";
+import MobileTopBar from "../Dashboard/MobileTopBar";
 
 const DashboardLayout = ({ children, title, lastUpdate }) => {
   const dispatch = useDispatch();

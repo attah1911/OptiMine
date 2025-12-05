@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../store/slices/authSlice";
 import { authService } from "../../services/authService";
-import DashboardLayout from "../../components/DashboardLayout";
-import StatCard from "../../components/DashboardLayout/StatCard";
+import DashboardLayout from "../../components/Layouts/DashboardLayout";
+import StatCard from "../../components/Dashboard/StatCard";
 import { shippingStats } from "../../utils/dashboardData";
 import { getErrorMessage } from "../../utils/helpers";
+import { useLastUpdate } from "../../hooks/useLastUpdate";
 import toast from "react-hot-toast";
 
 const ShippingDashboard = () => {
   const dispatch = useDispatch();
-  const [lastUpdate, setLastUpdate] = useState(new Date());
+  const { lastUpdate, updateLastUpdate } = useLastUpdate();
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
@@ -18,7 +19,7 @@ const ShippingDashboard = () => {
         const response = await authService.getCurrentUser();
         if (response.success) {
           dispatch(setUser(response.data));
-          setLastUpdate(new Date());
+          updateLastUpdate();
         }
       } catch (error) {
         const errorMessage = getErrorMessage(error);
@@ -27,7 +28,7 @@ const ShippingDashboard = () => {
     };
 
     fetchCurrentUser();
-  }, [dispatch]);
+  }, [dispatch, updateLastUpdate]);
 
   return (
     <DashboardLayout title="Shipping Planner Dashboard" lastUpdate={lastUpdate}>

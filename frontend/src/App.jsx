@@ -22,8 +22,8 @@ import WeeklyPlanShipping from "./pages/shipping/WeeklyPlanShipping";
 import RoutePerformance from "./pages/shipping/RoutePerformance";
 import EditDataShipping from "./pages/shipping/EditDataShipping";
 
-import ProtectedRoute from "./components/ProtectedRoute";
-import ChatBot from "./components/ChatBot";
+import ProtectedRoute from "./components/Routes/ProtectedRoute";
+import ChatBot from "./components/Features/ChatBot/ChatBot";
 
 import MapView from "./pages/map/MapView";
 
@@ -91,6 +91,17 @@ function App() {
         />
 
         <Route
+          path="/dashboard/mining_planner/map"
+          element={
+            <ProtectedRoute
+              allowedRoles={["mining_planner", "shipping_planner"]}
+            >
+              <MapView />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/dashboard/mining_planner/manage-user"
           element={
             <ProtectedRoute allowedRoles={["mining_planner"]}>
@@ -136,6 +147,17 @@ function App() {
           }
         />
 
+        <Route
+          path="/dashboard/shipping_planner/map"
+          element={
+            <ProtectedRoute
+              allowedRoles={["mining_planner", "shipping_planner"]}
+            >
+              <MapView />
+            </ProtectedRoute>
+          }
+        />
+
         {/* Default redirect */}
         <Route
           path="/"
@@ -150,18 +172,6 @@ function App() {
 
         {/* 404 */}
         <Route path="*" element={<Navigate to="/" replace />} />
-
-        {/* Map Route - accessible by both roles */}
-        <Route
-          path="/map"
-          element={
-            <ProtectedRoute
-              allowedRoles={["mining_planner", "shipping_planner"]}
-            >
-              <MapView />
-            </ProtectedRoute>
-          }
-        />
       </Routes>
 
       {isAuthenticated && <ChatBot />}

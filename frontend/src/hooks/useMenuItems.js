@@ -4,6 +4,7 @@ import {
   HiOutlineCalendar,
   HiOutlinePencil,
   HiOutlineUser,
+  HiOutlineMap,
 } from "react-icons/hi";
 import { MdFactCheck } from "react-icons/md";
 import { USER_ROLES } from "../utils/constants";
@@ -26,6 +27,11 @@ export const useMenuItems = (userRole) => {
         icon: HiOutlinePencil,
         path: `/dashboard/${userRole}/edit-data`,
       },
+      {
+        name: "Map",
+        icon: HiOutlineMap,
+        path: `/dashboard/${userRole}/map`,
+      },
     ];
 
     if (userRole === USER_ROLES.MINING_PLANNER) {
@@ -38,6 +44,7 @@ export const useMenuItems = (userRole) => {
         },
         commonMenus[1],
         commonMenus[2],
+        commonMenus[3],
         {
           name: "Manage User",
           icon: HiOutlineUser,
@@ -56,6 +63,7 @@ export const useMenuItems = (userRole) => {
         },
         commonMenus[1],
         commonMenus[2],
+        commonMenus[3],
       ];
     }
 
