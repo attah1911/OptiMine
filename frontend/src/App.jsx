@@ -25,6 +25,8 @@ import EditDataShipping from "./pages/shipping/EditDataShipping";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ChatBot from "./components/ChatBot";
 
+import MapView from "./pages/map/MapView";
+
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
 
@@ -148,6 +150,18 @@ function App() {
 
         {/* 404 */}
         <Route path="*" element={<Navigate to="/" replace />} />
+
+        {/* Map Route - accessible by both roles */}
+        <Route
+          path="/map"
+          element={
+            <ProtectedRoute
+              allowedRoles={["mining_planner", "shipping_planner"]}
+            >
+              <MapView />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
 
       {isAuthenticated && <ChatBot />}

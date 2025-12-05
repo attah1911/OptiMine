@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Input from "../common/Input";
-import Button from "../common/Button";
+import Input from "../Common/Input";
+import Button from "../Common/Button";
 import { useAuth } from "../../hooks/useAuth";
 
 const LoginForm = () => {

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../store/slices/authSlice";
 import { authService } from "../../services/authService";
 import DashboardLayout from "../../components/DashboardLayout";
-import StatCard from "../../components/dashboard/StatCard";
+import StatCard from "../../components/DashboardLayout/StatCard";
 import { miningStats } from "../../utils/dashboardData";
 import { getErrorMessage } from "../../utils/helpers";
 import toast from "react-hot-toast";

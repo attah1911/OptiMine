@@ -4,6 +4,7 @@ import helmet from "helmet";
 import dotenv from "dotenv";
 import rateLimit from "express-rate-limit";
 import authRoutes from "./routes/authRoutes.js";
+import mapRoutes from "./routes/mapRoutes.js";
 import { testConnection } from "./config/database.js";
 
 dotenv.config();
@@ -42,6 +43,7 @@ app.get("/health", (req, res) => {
 
 // API routes
 app.use("/api/auth", authRoutes);
+app.use("/api/map", mapRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
